@@ -1,0 +1,34 @@
+# systemd unit for the minigames server.
+# Copy to /etc/systemd/system/minecraft-minigames.service, replace the
+# placeholders, then: sudo systemctl daemon-reload && sudo systemctl enable --now minecraft-minigames
+[Unit]
+Description=Minecraft 1.20.1 Forge Minigames server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__MC_USER__
+Group=__MC_USER__
+WorkingDirectory=__MC_DIR__
+ExecStart=__MC_DIR__/start.sh
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=120s
+KillSignal=SIGTERM
+SuccessExitStatus=0 143
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=__MC_DIR__
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

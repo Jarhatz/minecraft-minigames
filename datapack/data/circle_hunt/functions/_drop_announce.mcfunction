@@ -1,0 +1,5 @@
+execute if score #drop_ok ch_scratch matches 1 run scoreboard players set #drop_t ch_scratch 0
+execute if score #drop_ok ch_scratch matches 1 run tellraw @a [{"text":"[SUPPLY DROP] ","color":"gold","bold":true},{"text":"A loot chest has appeared at ","color":"white"},{"score":{"name":"#px","objective":"ch_scratch"},"color":"aqua","bold":true},{"text":" / ","color":"gray"},{"score":{"name":"#py","objective":"ch_scratch"},"color":"aqua","bold":true},{"text":" / ","color":"gray"},{"score":{"name":"#pz","objective":"ch_scratch"},"color":"aqua","bold":true}]
+execute if score #drop_ok ch_scratch matches 1 run title @a actionbar [{"text":"SUPPLY DROP: ","color":"gold","bold":true},{"score":{"name":"#px","objective":"ch_scratch"},"color":"aqua"},{"text":" / ","color":"gray"},{"score":{"name":"#py","objective":"ch_scratch"},"color":"aqua"},{"text":" / ","color":"gray"},{"score":{"name":"#pz","objective":"ch_scratch"},"color":"aqua"}]
+execute if score #drop_ok ch_scratch matches 1 run playsound minecraft:entity.firework_rocket.launch player @a ~ ~ ~ 1 1
+execute unless score #drop_ok ch_scratch matches 1 run scoreboard players set #drop_t ch_scratch 4700

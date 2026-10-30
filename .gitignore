@@ -1,0 +1,33 @@
+# Secrets — never commit
+.rcon-pass
+*.rcon-pass
+.next-seed
+*.env
+secrets/
+
+# Runtime / generated — not part of the package
+world/
+world_*/
+seedcheck/
+logs/
+*.log
+crash-reports/
+mods/*.jar
+cache/
+usercache.json
+usernamecache.json
+banned-*.json
+ops.json
+whitelist.json
+.seed-daemon.log
+
+# Third-party binaries we do not redistribute
+*.jar
+server.jar
+forge-*-installer.jar
+jre*/
+libraries/
+
+# OS / editor cruft
+.DS_Store
+*.swp

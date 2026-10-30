@@ -1,0 +1,1 @@
+tellraw @a [{"text":"[Minigames] ","color":"red","bold":true},{"text":"A game is already running. Stop it first: ","color":"white"},{"text":"[■ STOP]","color":"aqua","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/function minigames:stop"},"hoverEvent":{"action":"show_text","contents":[{"text":"/function minigames:stop","color":"aqua"}]}}]

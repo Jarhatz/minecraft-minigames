@@ -1,0 +1,8 @@
+{
+  "function": "minecraft:copy_nbt",
+  "source": { "type": "minecraft:storage", "source": "circle_hunt:cmp" },
+  "ops": [
+    { "source": "LodestonePos", "target": "LodestonePos", "op": "replace" },
+    { "source": "LodestoneDimension", "target": "LodestoneDimension", "op": "replace" }
+  ]
+}

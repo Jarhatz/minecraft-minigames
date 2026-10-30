@@ -1,0 +1,18 @@
+# server.properties for the OPTIONAL seed pre-loader's shadow vanilla instance.
+# Put this (as server.properties) in the seedcheck directory next to a vanilla
+# server.jar. Use DIFFERENT ports from the live server, and the SAME level-type.
+level-type=minecraft\:large_biomes
+generator-settings={}
+level-seed=
+enable-rcon=true
+rcon.port=25599
+rcon.password=__CHANGE_ME__
+broadcast-rcon-to-ops=false
+server-port=25598
+online-mode=false
+max-players=1
+spawn-protection=0
+view-distance=6
+simulation-distance=4
+sync-chunk-writes=false
+motd=seedcheck

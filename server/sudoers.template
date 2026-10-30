@@ -1,0 +1,13 @@
+# OPTIONAL: lets a non-root admin account run the management scripts without a
+# password prompt. Install with:  sudo visudo -f /etc/sudoers.d/minecraft-minigames
+# Replace __ADMIN__ with your login user and __MC_USER__ with the server's run user.
+#
+# Service control:
+__ADMIN__ ALL=(root) NOPASSWD: /usr/bin/systemctl start minecraft-minigames.service, \
+  /usr/bin/systemctl stop minecraft-minigames.service, \
+  /usr/bin/systemctl restart minecraft-minigames.service, \
+  /usr/bin/systemctl is-active minecraft-minigames.service, \
+  /usr/bin/systemctl daemon-reload
+#
+# Act as the server user (needed to edit files under MC_DIR and manage the world):
+__ADMIN__ ALL=(__MC_USER__) NOPASSWD: /bin/bash -c *

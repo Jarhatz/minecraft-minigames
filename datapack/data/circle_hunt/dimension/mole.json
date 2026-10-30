@@ -1,0 +1,17 @@
+{
+  "type": "circle_hunt:mole",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "layers": [
+        { "block": "minecraft:bedrock", "height": 1 },
+        { "block": "minecraft:stone", "height": 253 },
+        { "block": "minecraft:bedrock", "height": 1 }
+      ],
+      "biome": "minecraft:the_void",
+      "features": false,
+      "lakes": false,
+      "structure_overrides": []
+    }
+  }
+}
