@@ -1,15 +1,16 @@
 scoreboard players set #active_mode ch_scratch 0
-tag @a remove ct_todo
-tag @a remove ct_new
-tag @a remove ct_tail
-# The mod has no admin "unchain" command. Its AFK feature removes the chains of anyone who
-# stands still, so: loosen the chain, freeze everyone for 20s, let AFK-unchain release them.
+tag @a remove ct_done
+tag @a remove ct_pending
+# The mod has no admin "unchain" command; its AFK feature drops the chains of anyone who has not
+# moved for 10s. So: pin every player exactly in place for 15s with AFK-unchain on.
 execute as @a[limit=1] run ct config length 128
 execute as @a[limit=1] run ct config afktime 10
 execute as @a[limit=1] run ct config afk true
-effect give @a minecraft:slowness 20 255 true
-effect give @a minecraft:jump_boost 20 200 true
-title @a times 5 380 10
+scoreboard objectives add ct_id dummy
+kill @e[type=minecraft:marker,tag=ct_pin]
+scoreboard players set #ct_n ch_scratch 0
+execute as @a at @s run function chainedtogether:_pin
+scoreboard players set #ct_release ch_scratch 300
+title @a times 5 300 10
 title @a title {"text":"⛓ Releasing chains...","color":"gold","bold":true}
-title @a subtitle {"text":"Stand still for 10 seconds","color":"yellow"}
-schedule function chainedtogether:_release_done 21s replace
+title @a subtitle {"text":"Hold still for 15 seconds","color":"yellow"}

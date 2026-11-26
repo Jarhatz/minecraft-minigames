@@ -7,15 +7,14 @@ execute as @a[limit=1] run ct config sharedhunger false
 execute as @a[limit=1] run ct config sharedinventory false
 execute as @a[limit=1] run ct config adminbypass false
 execute as @a[limit=1] run ct config afk false
-# Build one line of players: each player is chained to the previous one.
-tag @a remove ct_tail
-tag @a remove ct_new
-tag @a add ct_todo
-tag @r[tag=ct_todo] add ct_tail
-tag @a[tag=ct_tail] remove ct_todo
-function chainedtogether:_next
-tag @a remove ct_tail
-tellraw @a [{"text":"[Chained Together] ","color":"gold","bold":true},{"text":"You are all chained in a line. Stay within 8 blocks of your neighbours. Hold R to pull a partner. If someone dies they respawn next to the group.","color":"white"}]
+execute as @a[limit=1] run ct config combatwarning false
+# Chain every player to every other player (a mesh), so one death never splits the group.
+tag @a remove ct_done
+tag @a remove ct_pending
+execute as @a run function chainedtogether:_join
+tag @a remove ct_done
+scoreboard players set #ct_heal ch_scratch 0
+tellraw @a [{"text":"[Chained Together] ","color":"gold","bold":true},{"text":"Everyone is chained to everyone. Stay within 8 blocks of each other. Hold R to pull a partner. If someone dies they respawn next to the group.","color":"white"}]
 title @a title {"text":"⛓ CHAINED TOGETHER","color":"gold","bold":true}
 title @a subtitle {"text":"Stick together!","color":"yellow"}
 playsound minecraft:block.chain.place master @a ~ ~ ~ 1 1

@@ -102,11 +102,11 @@ world keeps tilting.
 
 
 ## Chained Together — `/function chainedtogether:start`
-Inspired by the Steam game. Everyone online is chained in a **line** (each player to the
-previous one, random order) with the *Chained Together* Forge mod (CurseForge file 7852988,
-v1.0.0 — **clients need the same jar**). The chain is 8 blocks; hold **R** to pull a partner.
-- **Deaths (mod default):** the player respawns and is teleported back and rechained to the
-  group; nobody else dies. Shared health/hunger/inventory are forced off.
-- Stop with `/function minigames:stop`: everyone is frozen for ~20s and the mod's AFK-unchain feature
-  removes the chains (the mod has no admin unchain command). Dragon's Breath (right-click)
-  also breaks your own chains, and leaving + rejoining always does. Start resets the length to 8.
+Inspired by the Steam game, using the *Chained Together* Forge mod (CurseForge file 7852988,
+v1.0.0 — **clients need the same jar**).
+- **Start:** everyone online at that moment is teleported together and chained to everyone else
+  (8-block chain; hold **R** to pull). Every 5s, anyone who came loose (death, relog, late join)
+  is chained back to the nearest player. Combat prompts are turned off.
+- **Deaths (mod default):** the player respawns and is pulled back to the group; nobody else dies.
+- **Stop:** `/function minigames:stop`. The mod has no admin unchain command, so everyone is held
+  in place for 15s while the mod's AFK-unchain feature drops every chain, then it is switched off.
