@@ -1,11 +1,12 @@
 scoreboard players set #active_mode ch_scratch 7
 # Mod defaults for this mode: 8-block chain, deaths = respawn and get pulled back to the group.
-ct config length 8
-ct config rechainondeath true
-ct config sharedhealth false
-ct config sharedhunger false
-ct config sharedinventory false
-ct config adminbypass false
+execute as @a[limit=1] run ct config length 8
+execute as @a[limit=1] run ct config rechainondeath true
+execute as @a[limit=1] run ct config sharedhealth false
+execute as @a[limit=1] run ct config sharedhunger false
+execute as @a[limit=1] run ct config sharedinventory false
+execute as @a[limit=1] run ct config adminbypass false
+execute as @a[limit=1] run ct config afk false
 # Build one line of players: each player is chained to the previous one.
 tag @a remove ct_tail
 tag @a remove ct_new

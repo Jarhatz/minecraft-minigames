@@ -107,6 +107,6 @@ previous one, random order) with the *Chained Together* Forge mod (CurseForge fi
 v1.0.0 — **clients need the same jar**). The chain is 8 blocks; hold **R** to pull a partner.
 - **Deaths (mod default):** the player respawns and is teleported back and rechained to the
   group; nobody else dies. Shared health/hunger/inventory are forced off.
-- Stop with `/function minigames:stop`. The mod has no admin unchain command, so stop only
-  stretches the chain to 128 blocks; chains are removed by breaking them with the break item
-  (Dragon's Breath) or `ct config`. Start resets the length to 8.
+- Stop with `/function minigames:stop`: everyone is frozen for ~12s and the mod's AFK-unchain feature
+  removes the chains (the mod has no admin unchain command). Dragon's Breath (right-click)
+  also breaks your own chains. Start resets the length to 8.

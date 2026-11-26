@@ -50,7 +50,7 @@ bossbar set circle_hunt:inversion color purple
 bossbar set circle_hunt:inversion style progress
 bossbar set circle_hunt:inversion max 3600
 execute unless score #prox_on ch_scratch matches 0..1 run scoreboard players set #prox_on ch_scratch 1
-execute unless score #upgrader_on ch_scratch matches 0..1 run scoreboard players set #upgrader_on ch_scratch 1
+execute unless score #upgrader_on ch_scratch matches 0..1 run scoreboard players set #upgrader_on ch_scratch 0
 execute unless score #mode ch_scratch matches 0..1 run scoreboard players set #mode ch_scratch 0
 execute unless score #drop_idx ch_scratch matches 0.. run scoreboard players set #drop_idx ch_scratch 0
 scoreboard objectives add bs_block dummy
