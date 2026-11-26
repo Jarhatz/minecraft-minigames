@@ -3,8 +3,6 @@ tag @a remove ct_done
 tag @a remove ct_pending
 # The mod has no admin "unchain" command; its AFK feature drops the chains of anyone who has not
 # moved for 10s. So: pin every player exactly in place for 15s with AFK-unchain on.
-execute as @a[limit=1] run ct config length 128
-execute as @a[limit=1] run ct config afktime 10
 execute as @a[limit=1] run ct config afk true
 scoreboard objectives add ct_id dummy
 kill @e[type=minecraft:marker,tag=ct_pin]

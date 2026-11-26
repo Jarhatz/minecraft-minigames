@@ -1,13 +1,7 @@
 scoreboard players set #active_mode ch_scratch 7
-# Mod defaults for this mode: 8-block chain, deaths = respawn and get pulled back to the group.
-execute as @a[limit=1] run ct config length 8
-execute as @a[limit=1] run ct config rechainondeath true
-execute as @a[limit=1] run ct config sharedhealth false
-execute as @a[limit=1] run ct config sharedhunger false
-execute as @a[limit=1] run ct config sharedinventory false
-execute as @a[limit=1] run ct config adminbypass false
+# Chain settings live in world/serverconfig/ct-server.toml (length 8, rechain on death). Writing
+# several `ct config` values at once races the config file watcher, so only toggle AFK here.
 execute as @a[limit=1] run ct config afk false
-execute as @a[limit=1] run ct config combatwarning false
 # Chain every player to every other player (a mesh), so one death never splits the group.
 tag @a remove ct_done
 tag @a remove ct_pending

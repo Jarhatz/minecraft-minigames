@@ -1,0 +1,66 @@
+
+#ct-server.toml — per-world settings.
+#SP: saves/<world>/serverconfig/ct-server.toml
+#=== Chain Behaviour ===
+[behaviour]
+	#Auto-chain all players on join.
+	chainOnJoin = false
+	#Max distance before enforcement. RECOMMENDED: 8.0  |  Range: 2–128
+	#Range: 2.0 ~ 128.0
+	maxChainLength = 8.0
+	#PULL (recommended) or TELEPORT.
+	pullStyle = "PULL"
+	#Passive enforcement pull force.
+	#RECOMMENDED: 0.15  |  Range: 0.01 – 1.0
+	#Keep low — high values cause the flying glitch.
+	#Range: 0.01 ~ 1.0
+	pullStrength = 0.3
+
+#=== Physics Caps (fixes infinite-pull flying glitch) ===
+[physics]
+	#Hard cap on horizontal velocity from chain pulls (blocks/tick).
+	#Prevents two players yanking each other off a cliff and flying forever.
+	#RECOMMENDED: 0.6  |  Range: 0.1 – 3.0
+	#Range: 0.1 ~ 3.0
+	maxPullVelocity = 0.8
+	#Horizontal velocity multiplied by this each tick to bleed off speed.
+	#0.85 = smooth natural stop (RECOMMENDED). 1.0 = no damping (glitchy).
+	#Range: 0.5 – 1.0
+	#Range: 0.5 ~ 1.0
+	pullVelocityDamping = 0.85
+
+#=== Death & Respawn ===
+[respawn]
+	#Rechain and teleport players to group after death.
+	rechainOnDeath = true
+	#Seconds after respawn before enforcement resumes. RECOMMENDED: 5  |  Range: 0–60
+	#Range: 0 ~ 60
+	respawnProtectionSeconds = 5
+
+#=== Player Exemptions ===
+[exemptions]
+	#Creative players skip enforcement.
+	ignoreCreative = true
+	#Spectator players skip enforcement.
+	ignoreSpectator = true
+	#Ops (level 2+) skip enforcement.
+	adminBypass = false
+
+#=== Chain Removal ===
+[removal]
+	#Players must hold the breakChainItem (set in ct-common.toml) to remove chains.
+	requireItemToRemove = true
+	#Ops can /ct unchain without the item.
+	allowAdminRemove = true
+
+#=== Performance ===
+[performance]
+	#Ticks between enforcement checks. RECOMMENDED: 1  |  Range: 1–20
+	#Range: 1 ~ 20
+	enforcementTickRate = 1
+
+#=== Dimension Handling ===
+[dimensions]
+	#IGNORE (recommended), TELEPORT, or PREVENT.
+	dimensionBehaviour = "TELEPORT"
+
