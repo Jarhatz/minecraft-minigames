@@ -111,6 +111,7 @@ server-side mod **ctphys** (`server/ctphys`, clients do NOT need it) for the phy
   (spring + damping), equal and opposite, summed over all links (net force), added to your own
   momentum. Hard limit at 9 blocks. Hold **R** for the mod's active pull.
 - **Deaths (mod default):** you respawn next to the group and are rechained; nobody else dies.
+  keepInventory is OFF during the game (you drop your items); the previous setting is restored on stop.
 - **Stop:** `/function minigames:stop` removes every chain instantly.
 - Admin: `/ctphys status` (links + distances), `/ctphys set <length|stiff|damp|maximp|slack> <v>`,
   `/ctphys on|off`, `/ctphys chainall`, `/ctphys release`.
