@@ -105,12 +105,13 @@ world keeps tilting.
 Inspired by the Steam game, using the *Chained Together* Forge mod (CurseForge file 7852988,
 v1.0.0 — **clients need the same jar**).
 - **Start:** everyone online at that moment is teleported together and chained to everyone else
-  (8-block chain; hold **R** to pull). Every 5s, anyone who came loose (death, relog, late join)
-  is chained back to the nearest player. Combat prompts are turned off.
+  — every pair linked, exactly like the mod's own chain-all (8-block chain, mod's default pull
+  physics; hold **R** to pull). Combat prompts are off (`combatTeleportWarning=false` in
+  config/ct-common.toml) because they silently defer links.
 - **Deaths (mod default):** the player respawns and is pulled back to the group; nobody else dies.
 - **Stop:** `/function minigames:stop`. The mod has no admin unchain command, so everyone is held
   in place for 15s while the mod's AFK-unchain feature drops every chain, then it is switched off.
-- Chain settings (length 8, pullStrength 0.3, maxPullVelocity 0.8, rechain on death) live in
+- Chain settings (length 8, mod-default pull 0.15 / 0.6, rechain on death) live in
   `server/defaultconfigs/ct-server.toml`; copy it to `deploy/data/forge/defaultconfigs/` so new
   worlds get it. The datapack does not write them (several `ct config` writes in one tick race
   Forge's config watcher and corrupt the file).

@@ -14,7 +14,7 @@
 	#RECOMMENDED: 0.15  |  Range: 0.01 – 1.0
 	#Keep low — high values cause the flying glitch.
 	#Range: 0.01 ~ 1.0
-	pullStrength = 0.3
+	pullStrength = 0.15
 
 #=== Physics Caps (fixes infinite-pull flying glitch) ===
 [physics]
@@ -22,7 +22,7 @@
 	#Prevents two players yanking each other off a cliff and flying forever.
 	#RECOMMENDED: 0.6  |  Range: 0.1 – 3.0
 	#Range: 0.1 ~ 3.0
-	maxPullVelocity = 0.8
+	maxPullVelocity = 0.6
 	#Horizontal velocity multiplied by this each tick to bleed off speed.
 	#0.85 = smooth natural stop (RECOMMENDED). 1.0 = no damping (glitchy).
 	#Range: 0.5 – 1.0
