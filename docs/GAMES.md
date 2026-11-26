@@ -75,3 +75,38 @@ If the Upgrader mod is installed, every player always carries one Upgrader item
 /function minigames:upgrader_off   # remove it from everyone (incl. on next login)
 /function minigames:upgrader_on    # give it back to everyone
 ```
+
+## Random Gravity — `/function randomgravity:start`
+Inspired by the Dream/Sapnap "Minecraft, But Gravity Is Random" mod: every player
+has their **own** gravity direction (down, up, north, south, east or west) and
+everyone's gets reshuffled every **5 minutes**. A purely cooperative survival
+overlay — no kits, no resets; just play (or race to beat the game) while the
+world keeps tilting.
+
+- **10-second warning:** a title shows *your* incoming direction, an actionbar
+  counts down (`⚠ GRAVITY -> ▲ NORTH in 7s`), and chat lists everyone's next
+  direction. A bossbar shows time until the next shift.
+- Directions are **unique per player** within each group of 6 (there are 6
+  directions); with more than 6 players a new group starts. Nobody is ever given
+  the direction they already have.
+- Gravity is driven by a **Gravity Anchor** item that the game places in your **offhand**
+  (anything already there is moved to your inventory). Keep it there: if you swap it
+  away or drop it, the game puts it back within a second. `DOWN` needs no item.
+- A compass heading (`🧭 NORTH (-Z)`) and your current gravity show above the hotbar.
+- Only players are affected — mobs, items, anvils and water keep normal gravity.
+- `NORTH = -Z`, `SOUTH = +Z`, `EAST = +X`, `WEST = -X` (open F3 to orient).
+- Extras: `/function randomgravity:start_fast` (1-minute shifts, for testing) and
+  `/function randomgravity:skip` (jump to the warning). End with
+  `/function minigames:stop`.
+- **Needs extra client+server mods** — see `server/mods.md`.
+
+
+## Chained Together — `/function chainedtogether:start`
+Inspired by the Steam game. Everyone online is chained in a **line** (each player to the
+previous one, random order) with the *Chained Together* Forge mod (CurseForge file 7852988,
+v1.0.0 — **clients need the same jar**). The chain is 8 blocks; hold **R** to pull a partner.
+- **Deaths (mod default):** the player respawns and is teleported back and rechained to the
+  group; nobody else dies. Shared health/hunger/inventory are forced off.
+- Stop with `/function minigames:stop`. The mod has no admin unchain command, so stop only
+  stretches the chain to 128 blocks; chains are removed by breaking them with the break item
+  (Dragon's Breath) or `ct config`. Start resets the length to 8.

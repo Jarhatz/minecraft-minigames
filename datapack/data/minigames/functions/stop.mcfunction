@@ -3,6 +3,8 @@ execute unless score #active_mode ch_scratch matches 0 run tellraw @a [{"text":"
 execute if score #active_mode ch_scratch matches 3 run function blockshuffle:stop
 execute if score #active_mode ch_scratch matches 4 run function boss_hunt:stop
 execute if score #active_mode ch_scratch matches 5 run function hotpotato:stop
+execute if score #active_mode ch_scratch matches 6 run function randomgravity:stop
+execute if score #active_mode ch_scratch matches 7 run function chainedtogether:stop
 execute if score #active_mode ch_scratch matches 1..2 run function circle_hunt:reset
 scoreboard players set #active_mode ch_scratch 0
 worldborder center 0 0

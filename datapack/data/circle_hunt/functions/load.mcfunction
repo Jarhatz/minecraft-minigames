@@ -79,7 +79,7 @@ scoreboard objectives add hp_hplast dummy
 scoreboard objectives add hp_lives dummy
 scoreboard players set #hp300 ch_scratch 300
 scoreboard players set #hp1200 ch_scratch 1200
-execute unless score #active_mode ch_scratch matches 0..5 run scoreboard players set #active_mode ch_scratch 0
+execute unless score #active_mode ch_scratch matches 0..7 run scoreboard players set #active_mode ch_scratch 0
 execute unless score #hp_active ch_scratch matches 0..1 run scoreboard players set #hp_active ch_scratch 0
 bossbar add hotpotato:fuse [{"text":"🥔 FUSE","color":"gold","bold":true}]
 bossbar set hotpotato:fuse color red

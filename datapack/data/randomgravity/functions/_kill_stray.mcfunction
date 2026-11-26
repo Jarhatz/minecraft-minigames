@@ -1,0 +1,5 @@
+kill @e[type=minecraft:item,nbt={Item:{id:"gravityapivs:gravity_anchor_up"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"gravityapivs:gravity_anchor_north"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"gravityapivs:gravity_anchor_south"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"gravityapivs:gravity_anchor_east"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"gravityapivs:gravity_anchor_west"}}]

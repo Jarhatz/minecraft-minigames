@@ -1,0 +1,7 @@
+execute if score @s rg_next matches 0 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "⬇ DOWN", "color": "green", "bold": true}]
+execute if score @s rg_next matches 1 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "⬆ UP", "color": "aqua", "bold": true}]
+execute if score @s rg_next matches 2 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "▲ NORTH", "color": "red", "bold": true}]
+execute if score @s rg_next matches 3 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "▼ SOUTH", "color": "gold", "bold": true}]
+execute if score @s rg_next matches 4 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "► EAST", "color": "yellow", "bold": true}]
+execute if score @s rg_next matches 5 run title @s subtitle [{"text": "Next gravity: ", "color": "gray"}, {"text": "◄ WEST", "color": "light_purple", "bold": true}]
+title @s title [{"text":"GRAVITY SHIFT","color":"light_purple","bold":true}]

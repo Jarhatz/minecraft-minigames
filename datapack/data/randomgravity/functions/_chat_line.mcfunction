@@ -1,0 +1,6 @@
+execute if score @s rg_next matches 0 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "⬇ DOWN", "color": "green", "bold": true}]
+execute if score @s rg_next matches 1 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "⬆ UP", "color": "aqua", "bold": true}]
+execute if score @s rg_next matches 2 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "▲ NORTH", "color": "red", "bold": true}]
+execute if score @s rg_next matches 3 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "▼ SOUTH", "color": "gold", "bold": true}]
+execute if score @s rg_next matches 4 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "► EAST", "color": "yellow", "bold": true}]
+execute if score @s rg_next matches 5 run tellraw @a [{"text": "  - ", "color": "dark_gray"}, {"selector": "@s", "color": "white"}, {"text": " -> ", "color": "dark_gray"}, {"text": "◄ WEST", "color": "light_purple", "bold": true}]

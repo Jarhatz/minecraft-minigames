@@ -1,0 +1,97 @@
+# Two independent Minecraft servers, built on itzg/docker-minecraft-server.
+#   vanilla : latest vanilla Java      -> host port 25565
+#   forge   : Forge 1.20.1-47.4.10     -> host port 25566 (+ minigames datapack)
+#
+# Security model:
+#   * online-mode=true            only Mojang-authenticated accounts can connect
+#   * whitelist (enforced)        only names in WHITELIST_* can join; empty = nobody
+#   * RCON is NOT published       reachable only inside the compose network
+#   * containers run non-root, no extra capabilities, no-new-privileges
+#
+# Usage:  cp .env.example .env  && edit it  &&  docker compose up -d
+
+x-common: &common
+  image: itzg/minecraft-server:latest
+  restart: unless-stopped
+  tty: true
+  user: "${MC_UID:-1000}:${MC_GID:-1000}"
+  stdin_open: true
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  environment: &common-env
+    EULA: "TRUE"
+    TZ: "${TZ:-UTC}"
+    ONLINE_MODE: "TRUE"
+    ENABLE_WHITELIST: "TRUE"
+    ENFORCE_WHITELIST: "TRUE"
+    EXISTING_WHITELIST_FILE: "SYNCHRONIZE"
+    OVERRIDE_WHITELIST: "TRUE"
+    OPS: "${OPS:-}"
+    ENABLE_RCON: "TRUE"
+    RCON_PASSWORD: "${RCON_PASSWORD:?set RCON_PASSWORD in .env}"
+    ENABLE_QUERY: "FALSE"
+    PREVENT_PROXY_CONNECTIONS: "FALSE"
+    SPAWN_PROTECTION: "0"
+    MAX_TICK_TIME: "-1"
+    USE_AIKAR_FLAGS: "TRUE"
+
+services:
+  vanilla:
+    <<: *common
+    container_name: mc-vanilla
+    ports:
+      - "25565:25565"
+    environment:
+      <<: *common-env
+      TYPE: "VANILLA"
+      VERSION: "LATEST"
+      WHITELIST: "${WHITELIST_VANILLA:-}"
+      MOTD: "Vanilla"
+      MAX_PLAYERS: "10"
+      MEMORY: "3G"
+      VIEW_DISTANCE: "10"
+    volumes:
+      - ./data/vanilla:/data
+    healthcheck:
+      test: ["CMD", "mc-health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 3m
+
+  forge:
+    <<: *common
+    container_name: mc-forge
+    ports:
+      - "25566:25565"
+    environment:
+      <<: *common-env
+      TYPE: "FORGE"
+      VERSION: "1.20.1"
+      FORGE_VERSION: "47.4.10"
+      WHITELIST: "${WHITELIST_FORGE:-}"
+      MOTD: "Party Minigames"
+      MAX_PLAYERS: "8"
+      MEMORY: "6G"
+      LEVEL_TYPE: "minecraft:large_biomes"
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "8"
+      DIFFICULTY: "normal"
+      DATAPACKS: "/datapacks/minigames"
+      # Optional extra mods from Modrinth, comma separated (see deploy/README.md).
+      MODRINTH_PROJECTS: "${FORGE_MODRINTH_PROJECTS:-}"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+    volumes:
+      - ./data/forge:/data
+      # Jars you download yourself (see server/mods.md) go here.
+      - ./mods:/mods:ro
+      # The minigames datapack, loaded into the world on every start.
+      - ../datapack:/datapacks/minigames:ro
+    healthcheck:
+      test: ["CMD", "mc-health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5m

@@ -10,6 +10,8 @@
    versions:
    - **Upgrader** (Upgrade Items) — the gambler item.
    - **YYZS Backpack** — portable storage.
+   - **GravityVS 1.0.2, Valkyrien Skies 2.4.11, Kotlin for Forge 4.12.0, MixinSquared 0.3.7**
+     — needed for the Random Gravity game (exact versions in `server/mods.md`).
    - *(optional)* Simple Voice Chat, Realistic Nametag — if the server uses them.
 
    See `server/mods.md` for versions and sources. If the server has these mods,

@@ -31,3 +31,7 @@ libraries/
 # OS / editor cruft
 .DS_Store
 *.swp
+
+# Docker deployment runtime data
+deploy/data/
+deploy/mods/*.jar
