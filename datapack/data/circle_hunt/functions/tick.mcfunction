@@ -10,7 +10,6 @@ execute if score #bs_active ch_scratch matches 1 run function blockshuffle:tick
 execute if score #bh_active ch_scratch matches 1 run function boss_hunt:tick
 execute if score #hp_active ch_scratch matches 1 run function hotpotato:tick
 execute if score #rg_active ch_scratch matches 1 run function randomgravity:tick
-execute if score #ct_release ch_scratch matches 1.. run function chainedtogether:release_tick
 execute if score #tick ch_scratch matches 20.. if score #upgrader_on ch_scratch matches 1 as @a[gamemode=survival] unless entity @s[nbt={Inventory:[{id:"upgrader:upgrader"}]}] run give @s upgrader:upgrader
 execute if score #tick ch_scratch matches 20.. if score #upgrader_on ch_scratch matches 0 run clear @a upgrader:upgrader
 execute if score #tick ch_scratch matches 20.. run scoreboard players set #tick ch_scratch 0

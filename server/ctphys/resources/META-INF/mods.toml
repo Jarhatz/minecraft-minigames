@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="ctphys"
+version="1.0.0"
+displayName="Chained Together Physics (server-side)"
+authors="minecraft-minigames"
+# Server-only: clients do not need this mod to join.
+displayTest="IGNORE_SERVER_VERSION"
+description='''Rope physics and admin commands (/ctphys) for the Chained Together mod.'''
+
+[[dependencies.ctphys]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="SERVER"
+
+[[dependencies.ctphys]]
+    modId="ct"
+    mandatory=true
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="SERVER"

@@ -62,3 +62,8 @@ at exactly these versions:
 - Required on **server and every client** (default Forge version check). All Rights Reserved,
   so share the CurseForge link rather than the jar. Server copy: `deploy/mods/chained-together-1.0.0.jar`.
 - Auto-chain on join is off (`chainOnJoin=false` in world/serverconfig/ct-server.toml); the minigame chains players.
+
+## ctphys (our server-side physics mod for Chained Together)
+- Source: `server/ctphys`. Build: `server/ctphys/build.sh` (needs docker and an installed Forge
+  server under `deploy/data/forge/libraries`), outputs `deploy/mods/ctphys-1.0.0.jar`; restart Forge.
+- Server only (`displayTest=IGNORE_SERVER_VERSION`) — players do not install it.

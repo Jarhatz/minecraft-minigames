@@ -102,16 +102,16 @@ world keeps tilting.
 
 
 ## Chained Together — `/function chainedtogether:start`
-Inspired by the Steam game, using the *Chained Together* Forge mod (CurseForge file 7852988,
-v1.0.0 — **clients need the same jar**).
-- **Start:** everyone online at that moment is teleported together and chained to everyone else
-  — every pair linked, exactly like the mod's own chain-all (8-block chain, mod's default pull
-  physics; hold **R** to pull). Combat prompts are off (`combatTeleportWarning=false` in
-  config/ct-common.toml) because they silently defer links.
-- **Deaths (mod default):** the player respawns and is pulled back to the group; nobody else dies.
-- **Stop:** `/function minigames:stop`. The mod has no admin unchain command, so everyone is held
-  in place for 15s while the mod's AFK-unchain feature drops every chain, then it is switched off.
-- Chain settings (length 8, mod-default pull 0.15 / 0.6, rechain on death) live in
-  `server/defaultconfigs/ct-server.toml`; copy it to `deploy/data/forge/defaultconfigs/` so new
-  worlds get it. The datapack does not write them (several `ct config` writes in one tick race
-  Forge's config watcher and corrupt the file).
+Inspired by the Steam game. Uses the *Chained Together* Forge mod (CurseForge file 7852988,
+v1.0.0 — **clients need the same jar**) for the chain links and visuals, plus our own
+server-side mod **ctphys** (`server/ctphys`, clients do NOT need it) for the physics.
+- **Start:** everyone online is teleported to whoever ran the command and the whole group is
+  chained (every pair linked). Running start again re-gathers and re-chains everyone.
+- **Physics (ctphys):** rope length 8. A stretched link pulls both players toward each other
+  (spring + damping), equal and opposite, summed over all links (net force), added to your own
+  momentum. Hard limit at 9 blocks. Hold **R** for the mod's active pull.
+- **Deaths (mod default):** you respawn next to the group and are rechained; nobody else dies.
+- **Stop:** `/function minigames:stop` removes every chain instantly.
+- Admin: `/ctphys status` (links + distances), `/ctphys set <length|stiff|damp|maximp|slack> <v>`,
+  `/ctphys on|off`, `/ctphys chainall`, `/ctphys release`.
+- ctphys sets the ct mod's own `maxChainLength` to 128 so its weaker per-link pull stays out of the way.
